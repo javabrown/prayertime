@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://praytimes.org/code/v2/js/PrayTimes.js"></script>
+		<link rel='stylesheet' href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" media='all'/>
+    </head>
+    
+    <body>
+            <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Fajr</th>
+                        <th>Sunrise</th>
+                        <th>Dhuhr</th>
+                        <th>Asr</th>
+                        <th>Maghrib</th>
+                        <th>Isha</th>
+                      </tr>
+                    </thead>
+                    <tbody id="prayer-data">
+                      <!-- tr>
+                        <td id="fajr">3:42</td>
+                        <td id="sunrise">5:22</td>
+                        <td id="dhuhr">12:56</td>
+                        <td id="asr">4:57</td>
+                        <td id="maghrib">8:29</td>
+                        <td id="isha">10:10</td>
+                      </tr -->
+                    </tbody>
+            </table>
+            
+            <hr/>
+	        
+            <!-- temp code begin -->
+            	
+            	
+            <br>
+	        
+            <p align="center">Waterloo, ON, Canada<p>
+            <div align="center" id="table"></div>
+            
+            <script type="text/javascript">
+            	    var date = new Date(); // today
+            	    var times = prayTimes.getTimes(date, [43, -80], -5);
+            	    var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+                    
+            	 
+            	    var html = '<tr>';
+            	    for(var i in list)	{
+            	    	html += '<td>'+ times[list[i].toLowerCase()]+ '</td>';
+            	    }
+            	    html += '</tr>';alert(html);
+            	    document.getElementById('prayer-data').innerHTML = html;
+            </script>
+    </body>
+</html>
