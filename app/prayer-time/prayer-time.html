@@ -1,0 +1,37 @@
+<div class="panel">
+     
+    <div class="panel-body">
+        <table class="table table-bordered salattime">
+                <thead>
+                  <tr>
+                    <th class="pt">Fajr</th>
+                    <th class="pt">Sunrise</th>
+                    <th class="pt">Dhuhr</th>
+                    <th class="pt">Asr</th>
+                    <th class="pt">Maghrib</th>
+                    <th class="pt">Isha</th>
+                  </tr>
+                </thead>
+                <tbody id="prayer-data">
+				
+                    <tr>
+                        <td class="pt" id="fajr"> {{fajrTime}} </td>
+                        <td class="pt" id="sunrise"> {{sunriseTime}} </td>
+                        <td class="pt" id="dhuhr"> {{dhuhrTime}} </td>
+                        <td class="pt" id="asr"> {{asrTime}} </td>
+                        <td class="pt" id="maghrib"> {{maghribTime}} </td>
+                        <td class="pt" id="isha"> {{ishaTime}} </td>
+                    </tr>
+				  
+                </tbody>
+				
+        </table>
+	    <span>
+                &nbsp;
+	    		<a href="#" class="pt" (click)="initLocation()"><i class="glyphicon glyphicon-screenshot"></i>Current location</a>
+                &nbsp;
+                <a align="center" class="pt"><i class="glyphicon glyphicon-map-marker"></i>Waterloo, ON, Canada</a>
+	    </span>					
+	</div>
+
+</div>

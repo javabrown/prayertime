@@ -1,0 +1,23 @@
+.pt {
+    font-size: 70%;
+}
+
+
+@media screen and (min-width: 400px) {
+	.pt {
+	    font-size: 100%;
+	}
+	
+    table {
+      table-layout: auto;
+    }
+}
+
+@keyframes blink {
+    to { color: green; }
+}
+
+.blink {
+    color: red;
+    animation: blink 1s steps(2, start) infinite;
+}

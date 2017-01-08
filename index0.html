@@ -1,0 +1,149 @@
+<html>
+    <head>
+	    
+		<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="http://praytimes.org/code/v2/js/PrayTimes.js"></script>
+		<link rel='stylesheet' href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" media='all'/>
+		<!-- link rel='stylesheet' href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" type="text/css" media='all'/ -->
+		
+		<style>
+			 
+			.pt {
+				    font-size: 70%;
+			}
+			
+		   	
+            @media screen and (min-width: 400px) {
+				.pt {
+				    font-size: 100%;
+				}
+				
+			    table {
+                  table-layout: auto;
+                }
+            }
+			
+            @keyframes blink {
+            to { color: green; }
+            }
+            
+            .blink {
+               color: red;
+               animation: blink 1s steps(2, start) infinite;
+            }			
+            
+		</style>
+		
+    </head>
+    
+	
+    <body>
+	
+            <!-- ul class="nav nav-tabs" id="myTab">
+            	<li class="active"><a data-target="#home" data-toggle="tab">UWMS Time</a></li>
+            	<li><a data-target="#profile" data-toggle="tab">Current Location</a></li>
+            </ul>
+            
+            <div class="tab-content">
+            	<div class="tab-pane active" id="home">Home</div>
+            	<div class="tab-pane" id="profile">Profile</div>
+            </div -->
+	
+            <div class="panel">
+                 
+				
+			    <div class="panel-body">
+                    <table class="table table-bordered salattime">
+                            <thead>
+                              <tr>
+                                <th class="pt">Fajr</th>
+                                <th class="pt">Sunrise</th>
+                                <th class="pt">Dhuhr</th>
+                                <th class="pt">Asr</th>
+                                <th class="pt">Maghrib</th>
+                                <th class="pt">Isha</th>
+                              </tr>
+                            </thead>
+                            <tbody id="prayer-data">
+                              <!-- tr>
+                                <td id="fajr">3:42</td>
+                                <td id="sunrise">5:22</td>
+                                <td id="dhuhr">12:56</td>
+                                <td id="asr">4:57</td>
+                                <td id="maghrib">8:29</td>
+                                <td id="isha">10:10</td>
+                              </tr -->
+                            </tbody>
+							
+                    </table>
+				    <span>
+                            &nbsp;
+				    		<a href="#" class="pt"><i class="glyphicon glyphicon-screenshot"></i>Current location</a>
+			                &nbsp;
+                            <a align="center" class="pt"><i class="glyphicon glyphicon-map-marker"></i>Waterloo, ON, Canada<a>
+				    </span>					
+				</div>
+
+            </div>
+	        
+            <!-- temp code begin -->
+   
+            <!-- temp code end   -->
+			
+             
+
+          
+    </body>
+	
+	<script>
+	
+           $( document ).ready(function() {
+            	    var date = new Date(); // today
+            	    var times = prayTimes.getTimes(date, [43, -80], -5);
+            	    var list = ['Fajr', 'Sunrise', 'Dhuhr', 'Asr', 'Maghrib', 'Isha'];
+                    
+            	 
+            	    var html = '<tr>';
+            	    for(var i in list)	{
+					    var time = times[list[i].toLowerCase()];
+						
+						//time difference check --begin-
+						var nextPTime = new Date();
+						nextPTime.setHours(time.split(":")[0]);
+						var nextPayerTime = parseInt(nextPTime.getHours());
+                        var currentTime = parseInt(new Date().getHours());
+                        var timeRemaining = nextPayerTime - currentTime;
+						//alert(timeRemaining);
+						var addBlinker = false;
+                        if(timeRemaining <=3){ //hour
+                            //alert(nextPayerTime + "  -  " + cTime);
+							addBlinker = true;
+                        }
+                        //time difference check --end-
+						
+						if(addBlinker == true){
+            	    	  html += '<td class="pt blink">'+ times[list[i].toLowerCase()]+ '</td>';
+						  addBlinker = false;
+						}
+						else{
+						  html += '<td class="pt">'+ times[list[i].toLowerCase()]+ '</td>';
+						}
+            	    }
+            	    html += '</tr>';
+            	    document.getElementById('prayer-data').innerHTML = html;
+           });
+	    
+           $('.start').click(function () {
+               $('.sunmoon .sun-animation').css('width', '70%');
+               $('.sun-symbol-path').css('-webkit-transform', 'rotateZ(27deg)');
+               alert(1)
+               return false;
+           });
+           
+           $('.reset').click(function () {
+               $('.sun-animation').css('width', '0%');
+               $('.sun-symbol-path').css('-webkit-transform', 'rotateZ(-75deg)');alert(2)
+               return false;
+           });	
+	</script>
+</html>
